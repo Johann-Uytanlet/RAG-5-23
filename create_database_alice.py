@@ -9,29 +9,21 @@ import os
 import shutil
 
 CHROMA_PATH = "chroma"
-DATA_PATH = "data/gen-ai-topic1-corpus"
+DATA_PATH = "data/books"
 
 
 def main():
     generate_data_store()
-    #documents = load_documents()
-    #for document in documents:
-    #    print("content:")
-    #    print(document.page_content)
-    #    print("meta data")
-    #    print(document.metadata)
-    #generate_data_store()
 
 
 def generate_data_store():
     documents = load_documents()
-    # Documents are relatively small so no need to split?
-    #chunks = split_text(documents)
-    save_to_chroma(documents)
+    chunks = split_text(documents)
+    save_to_chroma(chunks)
 
 
 def load_documents():
-    loader = DirectoryLoader(DATA_PATH, glob="*.txt")
+    loader = DirectoryLoader(DATA_PATH, glob="*.md")
     documents = loader.load()
     return documents
 

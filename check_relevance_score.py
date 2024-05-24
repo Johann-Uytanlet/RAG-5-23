@@ -5,7 +5,7 @@ CHROMA_PATH = "chroma"
 
 
 def main():
-    query_text = "Your query text here"
+    query_text = "How do Yangs help Langs"
     search_chroma_database(query_text)
 
 
@@ -19,17 +19,18 @@ def search_chroma_database(query_text):
     # Embed the query text (single item list)
     query_embedding = embeddings.embed_documents([query_text])[0]
 
-    # Perform a similarity search with precomputed embeddings
-    results = db.similarity_search_by_vector(query_embedding, k=5)  # Get top 5 most similar documents
-    #results = db.similarity_search(query_text, k=5)
+    # Perform a similarity search with relevance scores
+    results_with_scores = db.similarity_search_with_relevance_scores(query_text, k=5)
 
-    # Print the results
-    for i, result in enumerate(results):
+    # Print the results with relevance scores
+    for i, (result, score) in enumerate(results_with_scores):
         print(f"Result {i + 1}:")
         print("Text:", result.page_content)
         print("Metadata:", result.metadata)
+        print("Relevance Score:", score)
         print("----------")
 
 
 if __name__ == "__main__":
     main()
+
