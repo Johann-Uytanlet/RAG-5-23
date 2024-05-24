@@ -1,0 +1,6 @@
+ollama
+langchain-community
+unstructured
+unstructured[md]
+sentence-transformers
+chromadb

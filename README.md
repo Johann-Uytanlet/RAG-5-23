@@ -1,5 +1,9 @@
+pip install -r requirements.txt
+
+
+
 Current set up
-run create_database.py = gen ai txt to vector database
+run the Simple RAG overview python notebook
 
 run the check_relevance_score.py - checks how relevant the 
 documents from the db is to a given query
