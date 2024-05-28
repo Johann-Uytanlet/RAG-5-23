@@ -6,7 +6,7 @@ from langchain.embeddings import OpenAIEmbeddings
 from langchain.prompts import ChatPromptTemplate
 import ollama
 
-CHROMA_PATH = "chroma"
+CHROMA_PATH = "chroma/document-level" # document-level topic2
 
 PROMPT_TEMPLATE = """
 Answer the question based only on the following context:
@@ -19,7 +19,7 @@ Answer the question based on the above context: {question}
 """
 
 
-DEFAULT_QUERY = "How do Yangs help Langs?"
+DEFAULT_QUERY = "Do Yangs die?"
 
 def main():
     # Create CLI.
